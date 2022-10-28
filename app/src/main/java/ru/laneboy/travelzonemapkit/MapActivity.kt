@@ -4,6 +4,8 @@ import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.PointF
 import android.os.Bundle
+import android.view.Window
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -29,6 +31,13 @@ class MapActivity : AppCompatActivity(), UserLocationObjectListener {
         MapKitFactory.setApiKey(MAPKIT_API_KEY)
         MapKitFactory.initialize(this)
         super.onCreate(savedInstanceState)
+
+        val w: Window = window
+        w.setFlags(
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+        )
+
         setContentView(R.layout.activity_map)
 
         val mapView: MapView = findViewById(R.id.mapview)
@@ -44,7 +53,7 @@ class MapActivity : AppCompatActivity(), UserLocationObjectListener {
     private fun initializeMap() {
         val mapView: MapView = findViewById(R.id.mapview)
         mapView.map.move(
-            CameraPosition(TARGET_LOCATION, 15.0f, 0.0f, 0.0f),
+            CameraPosition(TARGET_LOCATION, 16.0f, 0.0f, 0.0f),
             Animation(Animation.Type.SMOOTH, 5f),
             null
         )
@@ -132,7 +141,7 @@ class MapActivity : AppCompatActivity(), UserLocationObjectListener {
 
     companion object {
         const val MAPKIT_API_KEY = "0f59f418-349a-4b78-ba49-04ebddce4f5b"
-        val TARGET_LOCATION = Point(51.844679, 55.141256);
+        val TARGET_LOCATION = Point(51.765443, 55.123961);
         const val PERMISSIONS_REQUEST_FINE_LOCATION = 1
     }
 }
