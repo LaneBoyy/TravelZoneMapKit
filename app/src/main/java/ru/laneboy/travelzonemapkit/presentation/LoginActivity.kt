@@ -1,4 +1,4 @@
-package ru.laneboy.travelzonemapkit
+package ru.laneboy.travelzonemapkit.presentation
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import com.google.android.material.textfield.TextInputEditText
+import ru.laneboy.travelzonemapkit.R
 
 
 class LoginActivity : AppCompatActivity() {

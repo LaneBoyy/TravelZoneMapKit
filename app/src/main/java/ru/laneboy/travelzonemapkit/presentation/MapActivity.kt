@@ -1,14 +1,17 @@
-package ru.laneboy.travelzonemapkit
+package ru.laneboy.travelzonemapkit.presentation
 
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.PointF
 import android.os.Bundle
+import android.util.Log
 import android.view.Window
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
 import com.yandex.mapkit.Animation
 import com.yandex.mapkit.MapKit
 import com.yandex.mapkit.MapKitFactory
@@ -22,15 +25,22 @@ import com.yandex.mapkit.user_location.UserLocationLayer
 import com.yandex.mapkit.user_location.UserLocationObjectListener
 import com.yandex.mapkit.user_location.UserLocationView
 import com.yandex.runtime.image.ImageProvider
+import ru.laneboy.travelzonemapkit.R
+import ru.laneboy.travelzonemapkit.databinding.ActivityMapBinding
 
 class MapActivity : AppCompatActivity(), UserLocationObjectListener {
 
+    private lateinit var binding: ActivityMapBinding
     private val userLocationLayer: UserLocationLayer? = null
+    private lateinit var viewModel: MainViewModel
+    private lateinit var landmarkListAdapter: LandmarkListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         MapKitFactory.setApiKey(MAPKIT_API_KEY)
         MapKitFactory.initialize(this)
         super.onCreate(savedInstanceState)
+
+        binding = ActivityMapBinding.inflate(layoutInflater)
 
         val w: Window = window
         w.setFlags(
@@ -38,25 +48,31 @@ class MapActivity : AppCompatActivity(), UserLocationObjectListener {
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
         )
 
-        setContentView(R.layout.activity_map)
+        setContentView(binding.root)
 
-        val mapView: MapView = findViewById(R.id.mapview)
-        mapView.map.isRotateGesturesEnabled = false
         initializeMap()
         requestLocationPermission()
-        val mapKit: MapKit = MapKitFactory.getInstance()
-        mapKit.resetLocationManagerToDefault()
-        setUserLocation()
+        setupLocation()
 
+        binding.btnOpenBS.setOnClickListener {
+            FragmentBottomSheetTest().show(supportFragmentManager, "openBottomSheetTag")
+        }
     }
 
     private fun initializeMap() {
         val mapView: MapView = findViewById(R.id.mapview)
+        mapView.map.isRotateGesturesEnabled = false
         mapView.map.move(
             CameraPosition(TARGET_LOCATION, 16.0f, 0.0f, 0.0f),
             Animation(Animation.Type.SMOOTH, 5f),
             null
         )
+    }
+
+    private fun setupLocation() {
+        val mapKit: MapKit = MapKitFactory.getInstance()
+        mapKit.resetLocationManagerToDefault()
+        setUserLocation()
     }
 
     private fun requestLocationPermission() {
@@ -82,7 +98,6 @@ class MapActivity : AppCompatActivity(), UserLocationObjectListener {
         userLocationLayer?.isHeadingEnabled = true
         userLocationLayer?.setObjectListener(this)
     }
-
 
     override fun onStop() {
         val mapView: MapView = findViewById(R.id.mapview)

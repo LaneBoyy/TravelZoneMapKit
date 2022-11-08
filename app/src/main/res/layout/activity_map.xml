@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MapActivity">
+    tools:context=".presentation.MapActivity">
 
     <com.yandex.mapkit.mapview.MapView
         android:id="@+id/mapview"
@@ -13,5 +13,24 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/btnOpenBS"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginStart="-10dp"
+        android:layout_marginEnd="-10dp"
+        android:layout_marginBottom="-15dp"
+        android:backgroundTint="@color/blue_light"
+        android:gravity="center"
+        android:paddingBottom="30dp"
+        android:text="@string/bottom_sheet_test"
+        android:textColor="@color/blue"
+        app:icon="@drawable/ic_baseline_keyboard_double_arrow_up_24"
+        app:iconGravity="textStart"
+        app:iconTint="@color/blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

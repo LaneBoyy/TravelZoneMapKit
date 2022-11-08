@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".presentation.LoginActivity">
 
     <ImageView
         android:layout_width="350dp"
@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1"/>
+        app:layout_constraintVertical_bias="0.1" />
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/CustomTextInputLayout"
@@ -37,7 +37,7 @@
             android:hint="@string/et_hint_password"
             android:inputType="numberPassword"
             android:maxLines="1"
-            android:textColor="@color/black"
+            android:textColor="@color/blue"
             android:textCursorDrawable="@drawable/cursor_shape"
             android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>
