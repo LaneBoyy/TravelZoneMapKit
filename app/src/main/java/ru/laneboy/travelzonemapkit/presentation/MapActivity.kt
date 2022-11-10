@@ -50,8 +50,8 @@ class MapActivity : AppCompatActivity(), UserLocationObjectListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         MapKitFactory.setApiKey(MAPKIT_API_KEY)
-        MapKitFactory.initialize(this)
         binding = ActivityMapBinding.inflate(layoutInflater)
+        MapKitFactory.initialize(this)
 
         super.onCreate(savedInstanceState)
 
@@ -127,6 +127,7 @@ class MapActivity : AppCompatActivity(), UserLocationObjectListener {
         MapKitFactory.getInstance().onStop()
         super.onStop()
     }
+
 
     override fun onPause() {
         super.onPause()

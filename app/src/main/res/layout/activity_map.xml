@@ -22,14 +22,14 @@
         android:layout_marginStart="-10dp"
         android:layout_marginEnd="-10dp"
         android:layout_marginBottom="-15dp"
-        android:backgroundTint="@color/blue_light"
+        android:backgroundTint="@color/green_light"
         android:gravity="center"
         android:paddingBottom="30dp"
         android:text="@string/bottom_sheet_test"
-        android:textColor="@color/blue"
+        android:textColor="@color/green"
         app:icon="@drawable/ic_baseline_keyboard_double_arrow_up_24"
         app:iconGravity="textStart"
-        app:iconTint="@color/blue"
+        app:iconTint="@color/green"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -39,11 +39,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
-        android:backgroundTint="@color/blue_light"
+        android:backgroundTint="@color/green_light"
         android:contentDescription="@string/content_FB_description"
+        android:clickable="true"
         android:src="@drawable/ic_baseline_location_on_24"
-        android:tint="@color/blue"
         app:layout_constraintBottom_toTopOf="@+id/btnOpenBS"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:focusable="true" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

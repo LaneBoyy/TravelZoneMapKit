@@ -2,20 +2,16 @@ package ru.laneboy.travelzonemapkit.presentation
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import ru.laneboy.travelzonemapkit.R
-import ru.laneboy.travelzonemapkit.databinding.FragmentBottomSheetTestBinding
+import ru.laneboy.travelzonemapkit.databinding.FragmentBottomSheetBinding
 
 class FragmentBottomSheetTest : BottomSheetDialogFragment() {
 
-    private lateinit var binding: FragmentBottomSheetTestBinding
+    private lateinit var binding: FragmentBottomSheetBinding
     private lateinit var viewModel: MainViewModel
     private var landmarkListAdapter: LandmarkListAdapter? = null
 
@@ -38,7 +34,7 @@ class FragmentBottomSheetTest : BottomSheetDialogFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentBottomSheetTestBinding.inflate(inflater, container, false)
+        binding = FragmentBottomSheetBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -53,10 +49,15 @@ class FragmentBottomSheetTest : BottomSheetDialogFragment() {
     private fun setupClickListener() {
         landmarkListAdapter?.onLandmarkItemClickListener = {
             val intent = Intent(context, LandmarkItemActivity::class.java)
-            intent.putExtra("TITLE", it.name)
-            intent.putExtra("DESCRIPTION", it.description)
+            intent.putExtra(INTENT_TITLE, it.name)
+            intent.putExtra(INTENT_DESCRIPTION, it.description)
+            isStateSaved
             startActivity(intent)
-
         }
+    }
+
+    companion object {
+        const val INTENT_TITLE = "TITLE"
+        const val INTENT_DESCRIPTION = "DESCRIPTION"
     }
 }

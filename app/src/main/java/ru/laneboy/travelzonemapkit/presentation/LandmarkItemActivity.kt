@@ -1,21 +1,40 @@
 package ru.laneboy.travelzonemapkit.presentation
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import ru.laneboy.travelzonemapkit.R
+import android.view.WindowManager
+import ru.laneboy.travelzonemapkit.databinding.ActivityLandmarkItemBinding
+import ru.laneboy.travelzonemapkit.presentation.FragmentBottomSheetTest.Companion.INTENT_DESCRIPTION
+import ru.laneboy.travelzonemapkit.presentation.FragmentBottomSheetTest.Companion.INTENT_TITLE
 
 class LandmarkItemActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityLandmarkItemBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        binding = ActivityLandmarkItemBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_landmark_item)
+        setContentView(binding.root)
+
+        // Убираем статус бар
+        val w = window
+        w.setFlags(
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+        )
+
+
+
+        binding.tvTitle.text = intent.getStringExtra(INTENT_TITLE)
+        binding.tvDescription.text = intent.getStringExtra(INTENT_DESCRIPTION)
+
+        onClickExit()
     }
 
-    companion object {
-
-        fun newIntentAddItem(context: Context): Intent {
-            return Intent(context, LandmarkItemActivity::class.java)
+    private fun onClickExit() {
+        binding.btnExitFromDescription.setOnClickListener {
+            onBackPressed()
         }
     }
 }

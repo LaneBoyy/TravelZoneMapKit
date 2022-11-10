@@ -25,7 +25,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun onButtonSingInClick() {
-        findViewById<AppCompatButton>(R.id.btn_sing_in).setOnClickListener {
+        findViewById<AppCompatButton>(R.id.btnSingIn).setOnClickListener {
             val password = findViewById<TextInputEditText>(R.id.et_password).text.toString()
             if (password.isEmpty()) {
                 Toast.makeText(this, "Заполните поле пароля", Toast.LENGTH_SHORT).show()
