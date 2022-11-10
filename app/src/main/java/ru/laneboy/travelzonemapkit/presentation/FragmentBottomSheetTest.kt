@@ -1,5 +1,6 @@
 package ru.laneboy.travelzonemapkit.presentation
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -51,7 +52,11 @@ class FragmentBottomSheetTest : BottomSheetDialogFragment() {
 
     private fun setupClickListener() {
         landmarkListAdapter?.onLandmarkItemClickListener = {
-            Log.d("MAinActivity", it.toString())
+            val intent = Intent(context, LandmarkItemActivity::class.java)
+            intent.putExtra("TITLE", it.name)
+            intent.putExtra("DESCRIPTION", it.description)
+            startActivity(intent)
+
         }
     }
 }

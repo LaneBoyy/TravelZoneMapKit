@@ -4,9 +4,6 @@ plugins {
 }
 
 android {
-    dependencies {
-        implementation 'com.google.android.gms:play-services-location:21.0.0'
-    }
     namespace 'ru.laneboy.travelzonemapkit'
     compileSdk 33
 
