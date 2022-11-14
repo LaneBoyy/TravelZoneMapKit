@@ -4,80 +4,100 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient"
     tools:context=".presentation.LandmarkItemActivity">
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="50dp"
         android:background="@drawable/iv_background"
         android:clipToOutline="true"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="75dp"
-        android:layout_marginEnd="50dp"
         android:scaleType="centerCrop"
         android:src="@drawable/landmark_test"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/appCompatButton" />
 
     <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="match_parent"
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="50dp"
-        android:text="Каменный верблюд"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:fontFamily="@font/geometria_bold"
+        android:text="Аудиоэкскурсия"
+        android:textColor="@color/white"
+        android:textSize="19sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/btnExitFromDescription" />
 
-    <TextView
-        android:id="@+id/textView2"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/appCompatButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="50dp"
-        android:text="Это каменный верблюд. Он настолько каменный, что даже Скала позавидует. Вы только посмотрите На его каменную и пафосную ебучку. Я бы не советовал с ним связываться. Вы окаменеете от ужаса."
-        android:textColor="@color/black"
-        android:textSize="16sp"
+        android:layout_height="25dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="45dp"
+        android:background="@drawable/btn_background_white"
+        android:text="аудиозапись"
+        android:textAllCaps="false"
+        android:textColor="@color/green"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-    <TextView
-        android:id="@+id/tvDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginTop="20dp"
-        tools:text="Это каменный верблюд."
-        android:textColor="@color/black"
-        android:textSize="16sp"
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/ll_background_white"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/geometria_bold"
+            android:text="Каменный верблюд"
+            android:textColor="@color/green_for_text"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/geometria_medium"
+            android:textColor="@color/green_for_text"
+            android:textSize="16sp"
+            tools:text="Это каменный верблюд." />
+
+    </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnExitFromDescription"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginLeft="70dp"
-        android:layout_marginRight="70dp"
-        android:layout_marginBottom="65dp"
-        android:background="@drawable/btn_background"
-        android:textColor="@color/green"
-        android:text="Назад"
-        android:textSize="16sp"
-        android:textAllCaps="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/btn_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

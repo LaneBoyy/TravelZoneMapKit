@@ -15,21 +15,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnOpenBS"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginStart="-10dp"
-        android:layout_marginEnd="-10dp"
-        android:layout_marginBottom="-15dp"
-        android:backgroundTint="@color/green_light"
-        android:gravity="center"
-        android:paddingBottom="30dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_background_gradient_second"
+        android:drawableTop="@drawable/ic_arrow_up"
+        android:fontFamily="@font/geometria_medium"
+        android:paddingBottom="14dp"
         android:text="@string/bottom_sheet_test"
-        android:textColor="@color/green"
-        app:icon="@drawable/ic_baseline_keyboard_double_arrow_up_24"
-        app:iconGravity="textStart"
-        app:iconTint="@color/green"
+        android:textColor="@color/white"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -39,12 +35,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
-        android:backgroundTint="@color/green_light"
-        android:contentDescription="@string/content_FB_description"
         android:clickable="true"
+        android:contentDescription="@string/content_FB_description"
+        android:focusable="true"
         android:src="@drawable/ic_baseline_location_on_24"
+        app:backgroundTint="@color/blue"
         app:layout_constraintBottom_toTopOf="@+id/btnOpenBS"
-        app:layout_constraintStart_toStartOf="parent"
-        android:focusable="true" />
+        app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

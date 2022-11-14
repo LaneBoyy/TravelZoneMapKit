@@ -10,24 +10,24 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_landmark_list"
         android:layout_width="match_parent"
-        android:paddingTop="10dp"
         android:layout_height="330dp"
+        android:paddingTop="5dp"
+        android:layout_marginTop="10dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/closeButton"
         tools:listitem="@layout/landmark_item" />
 
-    <com.google.android.material.button.MaterialButton
+    <ImageView
         android:id="@+id/closeButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/green_light"
-        android:stateListAnimator="@null"
-        android:text="Закрыть"
-        android:textColor="@color/green"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:padding="5dp"
+        android:layout_marginTop="-20dp"
+        android:src="@drawable/ic_arrow_down"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rv_landmark_list" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

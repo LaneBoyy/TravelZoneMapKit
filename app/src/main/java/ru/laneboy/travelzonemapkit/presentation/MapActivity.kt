@@ -177,7 +177,6 @@ class MapActivity : AppCompatActivity(), UserLocationObjectListener {
 
 
     companion object {
-        val TARGET_LOCATION = Point(51.765443, 55.123961)
         const val PERMISSIONS_REQUEST_FINE_LOCATION = 1
     }
 }

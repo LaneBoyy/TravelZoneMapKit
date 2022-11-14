@@ -19,6 +19,18 @@
         android:theme="@style/Theme.TravelZoneMapKit"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.StartScreenActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".presentation.LandmarkItemActivity"
             android:exported="false">
             <meta-data
@@ -27,22 +39,17 @@
         </activity>
         <activity
             android:name=".presentation.LoginActivity"
-            android:exported="true"
+            android:exported="false"
             android:windowSoftInputMode="adjustResize">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
-
         </activity>
         <activity
             android:name=".presentation.MapActivity"
             android:exported="false">
+
         </activity>
     </application>
 

@@ -16,24 +16,27 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        val win: Window = window
-        win.setFlags(
-            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
 
         onButtonSingInClick()
+
     }
 
     private fun onButtonSingInClick() {
         findViewById<AppCompatButton>(R.id.btnSingIn).setOnClickListener {
-            val password = findViewById<TextInputEditText>(R.id.et_password).text.toString()
-            if (password.isEmpty()) {
-                Toast.makeText(this, "Заполните поле пароля", Toast.LENGTH_SHORT).show()
-            } else {
-                val intent = Intent(this, MapActivity::class.java)
-                startActivity(intent)
-                finish()
-            }
+//            val password = findViewById<TextInputEditText>(R.id.et_password).text.toString()
+//            if (password.isEmpty()) {
+//                Toast.makeText(this, "Заполните поле пароля", Toast.LENGTH_SHORT).show()
+//            } else {
+//                val intent = Intent(this, MapActivity::class.java)
+//                startActivity(intent)
+//                finish()
+//            }
+
+//                <ПОТОМ ИСПРАВИТЬ>
+            val intent = Intent(this, MapActivity::class.java)
+            startActivity(intent)
+            finish()
+//                </ПОТОМ ИСПРАВИТЬ>
         }
     }
 }
