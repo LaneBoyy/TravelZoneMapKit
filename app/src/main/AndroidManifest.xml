@@ -19,7 +19,7 @@
         android:theme="@style/Theme.TravelZoneMapKit"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.StartScreenActivity"
+            android:name=".presentation.activities.StartScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,14 +31,14 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".presentation.LandmarkItemActivity"
+            android:name=".presentation.activities.LandmarkItemActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".presentation.LoginActivity"
+            android:name=".presentation.activities.LoginActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize">
 
@@ -47,7 +47,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".presentation.MapActivity"
+            android:name=".presentation.activities.MapActivity"
             android:exported="false">
 
         </activity>

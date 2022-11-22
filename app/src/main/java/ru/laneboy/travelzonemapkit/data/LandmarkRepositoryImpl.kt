@@ -14,8 +14,11 @@ object LandmarkRepositoryImpl : LandmarkRepository {
     private var autoIncrementId = 0
 
     init {
-        for (i in 0 until 7) {
-            val item = LandmarkItem("Верблюд $i", "Он каменный", R.drawable.landmark_test)
+        val item0 = LandmarkItem("Eminem", "Та самая белая ворона", R.drawable.eminemwithoutme, R.raw.eminem_without_me)
+        addLandmarkItem(item0)
+        updateList()
+        for (i in 0 until 5) {
+            val item = LandmarkItem("Верблюд $i", "Он каменный", R.drawable.landmark_test, R.raw.eminem_without_me)
             addLandmarkItem(item)
             updateList()
         }

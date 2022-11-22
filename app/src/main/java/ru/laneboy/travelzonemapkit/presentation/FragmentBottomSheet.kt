@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import ru.laneboy.travelzonemapkit.databinding.FragmentBottomSheetBinding
+import ru.laneboy.travelzonemapkit.presentation.activities.LandmarkItemActivity
 
 class FragmentBottomSheet : BottomSheetDialogFragment() {
 
@@ -55,6 +56,7 @@ class FragmentBottomSheet : BottomSheetDialogFragment() {
             intent.putExtra(INTENT_TITLE, it.name)
             intent.putExtra(INTENT_DESCRIPTION, it.description)
             intent.putExtra(INTENT_PICTURE, it.landmarkImage)
+            intent.putExtra(INTENT_SOUND, it.landmarkSound)
             isStateSaved
             startActivity(intent)
         }
@@ -64,5 +66,6 @@ class FragmentBottomSheet : BottomSheetDialogFragment() {
         const val INTENT_TITLE = "TITLE"
         const val INTENT_DESCRIPTION = "DESCRIPTION"
         const val INTENT_PICTURE = "PICTURE"
+        const val INTENT_SOUND = "SOUND"
     }
 }
