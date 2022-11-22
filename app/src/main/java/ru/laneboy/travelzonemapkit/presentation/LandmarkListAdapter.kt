@@ -19,7 +19,7 @@ class LandmarkListAdapter : ListAdapter<LandmarkItem, LandmarkItemViewHolder>(La
     override fun onBindViewHolder(viewHolder: LandmarkItemViewHolder, position: Int) {
         val landmarkItem = getItem(position)
         with(viewHolder) {
-            ivImage.setImageResource(landmarkItem.landmark_image)
+            ivImage.setImageResource(landmarkItem.landmarkImage)
             tvTitle.text = landmarkItem.name
             tvDescription.text = landmarkItem.description
             view.setOnClickListener {

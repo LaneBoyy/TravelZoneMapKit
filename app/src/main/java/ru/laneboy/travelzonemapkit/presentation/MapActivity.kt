@@ -1,30 +1,16 @@
 package ru.laneboy.travelzonemapkit.presentation
 
-import android.content.pm.PackageManager
-import android.graphics.Color
 import android.graphics.PointF
-import android.os.Build
 import android.os.Bundle
-import android.util.Log
-import android.view.Window
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.RecyclerView
-import com.yandex.mapkit.Animation
-import com.yandex.mapkit.MapKit
 import com.yandex.mapkit.MapKitFactory
 import com.yandex.mapkit.geometry.Point
-import com.yandex.mapkit.geometry.Polyline
 import com.yandex.mapkit.layers.ObjectEvent
-import com.yandex.mapkit.location.Location
 import com.yandex.mapkit.map.CameraPosition
 import com.yandex.mapkit.map.IconStyle
 import com.yandex.mapkit.map.MapObjectCollection
 import com.yandex.mapkit.map.RotationType
-import com.yandex.mapkit.mapview.MapView
 import com.yandex.mapkit.user_location.UserLocationLayer
 import com.yandex.mapkit.user_location.UserLocationObjectListener
 import com.yandex.mapkit.user_location.UserLocationView
@@ -35,7 +21,6 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import ru.laneboy.travelzonemapkit.R
 import ru.laneboy.travelzonemapkit.databinding.ActivityMapBinding
-import java.util.ArrayList
 
 class MapActivity : AppCompatActivity(), UserLocationObjectListener {
 
@@ -64,13 +49,11 @@ class MapActivity : AppCompatActivity(), UserLocationObjectListener {
 
         setContentView(binding.root)
 
-        requestLocationPermission()
         setMap()
         setButtonListener()
 
-
         binding.btnOpenBS.setOnClickListener {
-            FragmentBottomSheetTest().show(supportFragmentManager, "openBottomSheetTag")
+            FragmentBottomSheet().show(supportFragmentManager, "openBottomSheetTag")
         }
     }
 
@@ -80,11 +63,7 @@ class MapActivity : AppCompatActivity(), UserLocationObjectListener {
             if (!point.latitude.equals(0.0) && !point.longitude.equals(0.0)) {
                 binding.mapview.map.move(
                     CameraPosition(
-                        point,
-                        14F,
-                        0F,
-                        0F
-                    )
+                        point, 14F, 0F, 0F)
                 )
             }
         }
@@ -99,21 +78,6 @@ class MapActivity : AppCompatActivity(), UserLocationObjectListener {
         userLocationLayer.isHeadingEnabled = false
         userLocationLayer.setObjectListener(this)
         mapObjects = binding.mapview.map.mapObjects.addCollection()
-    }
-
-    private fun requestLocationPermission() {
-        if (ContextCompat.checkSelfPermission(
-                this,
-                "android.permission.ACCESS_FINE_LOCATION"
-            )
-            != PackageManager.PERMISSION_GRANTED
-        ) {
-            ActivityCompat.requestPermissions(
-                this,
-                arrayOf("android.permission.ACCESS_FINE_LOCATION"),
-                PERMISSIONS_REQUEST_FINE_LOCATION
-            )
-        }
     }
 
     override fun onStart() {
@@ -164,7 +128,7 @@ class MapActivity : AppCompatActivity(), UserLocationObjectListener {
                     cameraLatitude = newLatitude
                     cameraLongitude = newLongitude
                 }
-                delay(5000)
+                delay(3000)
             }
         }
     }

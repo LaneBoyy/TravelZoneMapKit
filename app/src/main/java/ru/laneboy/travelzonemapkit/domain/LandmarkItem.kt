@@ -6,7 +6,7 @@ data class LandmarkItem(
     val name: String,
     val description: String,
     @DrawableRes
-    val landmark_image: Int,
+    val landmarkImage: Int,
     var id: Int = UNDEFINED_ID
 ) {
 

@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import ru.laneboy.travelzonemapkit.databinding.FragmentBottomSheetBinding
 
-class FragmentBottomSheetTest : BottomSheetDialogFragment() {
+class FragmentBottomSheet : BottomSheetDialogFragment() {
 
     private lateinit var binding: FragmentBottomSheetBinding
     private lateinit var viewModel: MainViewModel
@@ -19,11 +19,7 @@ class FragmentBottomSheetTest : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupRecyclerView()
-
-        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
-        viewModel.landmarkList.observe(this) {
-            landmarkListAdapter?.submitList(it)
-        }
+        fillRecyclerView()
 
         binding.closeButton.setOnClickListener {
             dismiss()
@@ -46,11 +42,19 @@ class FragmentBottomSheetTest : BottomSheetDialogFragment() {
         setupClickListener()
     }
 
+    private fun fillRecyclerView(){
+        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
+        viewModel.landmarkList.observe(this) {
+            landmarkListAdapter?.submitList(it)
+        }
+    }
+
     private fun setupClickListener() {
         landmarkListAdapter?.onLandmarkItemClickListener = {
             val intent = Intent(context, LandmarkItemActivity::class.java)
             intent.putExtra(INTENT_TITLE, it.name)
             intent.putExtra(INTENT_DESCRIPTION, it.description)
+            intent.putExtra(INTENT_PICTURE, it.landmarkImage)
             isStateSaved
             startActivity(intent)
         }
@@ -59,5 +63,6 @@ class FragmentBottomSheetTest : BottomSheetDialogFragment() {
     companion object {
         const val INTENT_TITLE = "TITLE"
         const val INTENT_DESCRIPTION = "DESCRIPTION"
+        const val INTENT_PICTURE = "PICTURE"
     }
 }
