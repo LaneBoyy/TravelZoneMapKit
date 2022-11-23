@@ -15,7 +15,8 @@ import ru.laneboy.travelzonemapkit.presentation.FragmentBottomSheet.Companion.IN
 class LandmarkItemActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLandmarkItemBinding
-    private lateinit var mediaPlayer: MediaPlayer
+
+    private var mpIsCreated = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityLandmarkItemBinding.inflate(layoutInflater)
@@ -52,11 +53,11 @@ class LandmarkItemActivity : AppCompatActivity() {
             binding.imageViewBigPicture
                 .setImageResource(bundle.getInt(FragmentBottomSheet.INTENT_PICTURE))
 
-            mediaPlayer = MediaPlayer
-                .create(this, bundle.getInt(FragmentBottomSheet.INTENT_SOUND))
-            mediaPlayer.isLooping
-            mediaPlayer.seekTo(0)
-            binding.tvEndTime.text = millisecondsToString(mediaPlayer.duration)
+//            mediaPlayer = MediaPlayer
+//                .create(this, bundle.getInt(FragmentBottomSheet.INTENT_SOUND))
+//            mediaPlayer!!.isLooping
+//            mediaPlayer!!.seekTo(0)
+//            binding.tvEndTime.text = millisecondsToString(mediaPlayer!!.duration)
         }
     }
 
@@ -69,12 +70,12 @@ class LandmarkItemActivity : AppCompatActivity() {
     //AUDIO FUNCTIONS ↓
 
     private fun activateSeekBarTime() {
-        binding.sbTime.max = mediaPlayer.duration
+//        binding.sbTime.max = mediaPlayer!!.duration
         binding.sbTime.setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
 
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, isFromUser: Boolean) {
                 if (isFromUser) {
-                    mediaPlayer.seekTo(progress)
+                    mediaPlayer!!.seekTo(progress)
                     seekBar.progress = progress
                 }
             }
@@ -89,9 +90,9 @@ class LandmarkItemActivity : AppCompatActivity() {
         })
         val thread = Thread {
             while (mediaPlayer != null) {
-                if (mediaPlayer.isPlaying) {
+                if (mediaPlayer!!.isPlaying) {
                     try {
-                        val current = mediaPlayer.currentPosition.toDouble()
+                        val current = mediaPlayer!!.currentPosition.toDouble()
                         val elapsedTime = millisecondsToString(current.toInt())
                         runOnUiThread {
                             binding.tvStartTime.text = elapsedTime
@@ -108,11 +109,21 @@ class LandmarkItemActivity : AppCompatActivity() {
 
     private fun onClickButtonPlay() {
         binding.btnPlay.setOnClickListener {
-            if (mediaPlayer.isPlaying) {
-                mediaPlayer.pause()
+            if (!mpIsCreated) {
+                val bundle = intent.extras
+                if (mediaPlayer == null) {
+                    mediaPlayer = MediaPlayer.create(this, bundle!!.getInt(FragmentBottomSheet.INTENT_SOUND))
+                } else {
+                    mediaPlayer!!.stop()
+                    mediaPlayer = MediaPlayer.create(this, bundle!!.getInt(FragmentBottomSheet.INTENT_SOUND))
+                }
+                mpIsCreated = true
+            }
+            if (mediaPlayer!!.isPlaying) {
+                mediaPlayer!!.pause()
                 binding.btnPlay.setBackgroundResource(R.drawable.ic_btn_play)
             } else {
-                mediaPlayer.start()
+                mediaPlayer!!.start()
                 binding.btnPlay.setBackgroundResource(R.drawable.ic_btn_pause)
             }
         }
@@ -128,5 +139,9 @@ class LandmarkItemActivity : AppCompatActivity() {
         }
         elapsedTime += seconds
         return elapsedTime
+    }
+
+    companion object {
+        private var mediaPlayer: MediaPlayer? = null
     }
 }
