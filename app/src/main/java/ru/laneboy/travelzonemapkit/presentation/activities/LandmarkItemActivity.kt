@@ -1,6 +1,5 @@
 package ru.laneboy.travelzonemapkit.presentation.activities
 
-import android.annotation.SuppressLint
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.WindowManager
@@ -88,10 +87,8 @@ class LandmarkItemActivity : AppCompatActivity() {
 
             }
         })
-
-        Thread {
-
-            while (true) {
+        val thread = Thread {
+            while (mediaPlayer != null) {
                 if (mediaPlayer.isPlaying) {
                     try {
                         val current = mediaPlayer.currentPosition.toDouble()
@@ -105,17 +102,18 @@ class LandmarkItemActivity : AppCompatActivity() {
                     }
                 }
             }
-        }.start()
+        }
+        thread.start()
     }
 
     private fun onClickButtonPlay() {
         binding.btnPlay.setOnClickListener {
             if (mediaPlayer.isPlaying) {
                 mediaPlayer.pause()
-//                binding.btnPlay.setBackgroundResource(R.drawable.ic_play)
+                binding.btnPlay.setBackgroundResource(R.drawable.ic_btn_play)
             } else {
                 mediaPlayer.start()
-//                btnPlay.setBackgroundResource(R.drawable.ic_pause)
+                binding.btnPlay.setBackgroundResource(R.drawable.ic_btn_pause)
             }
         }
     }
